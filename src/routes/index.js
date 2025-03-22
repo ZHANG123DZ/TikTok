@@ -1,7 +1,7 @@
 import config from "../config";
-import Home from "../page/Home";
-import Discover from "../page/Discover";
-import NotFound from "../page/NotFound";
+import Home from "../page/Home/index.jsx";
+import Discover from "../page/Discover/index.jsx";
+import NotFound from "../page/NotFound/index.jsx";
 
 const routes = [
     {
