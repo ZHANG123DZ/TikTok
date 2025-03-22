@@ -18,12 +18,12 @@ function SideNav() {
           <NavLink to={config.routes.home} >
             <button className={TUXButtonStyles.TUXButtonSearch}>
               <div className={TUXButtonStyles.TUXButton_contentSearch}>
-                <div className={TUXButtonStyles.TUXButton_iconContainerSearch}><i class='bx bx-search'></i></div>
+                <div className={TUXButtonStyles.TUXButton_iconContainerSearch}><i className='bx bx-search'></i></div>
                   <div className={TUXButtonStyles.TUXButton_labelSearch}>Tìm kiếm</div>
               </div>
             </button>
           </NavLink>
-          </div>
+        </div>
       </div>
       <div className="ScrollingContentContainer">
         <div className="MainNavContent">
@@ -31,7 +31,7 @@ function SideNav() {
           <NavLink to={config.routes.home} >
             <button className={TUXButtonStyles.TUXButton}>
               <div className={TUXButtonStyles.TUXButton_content}>
-                <div className={TUXButtonStyles.TUXButton_iconContainer}><i class='bx bxs-home'></i></div>
+                <div className={TUXButtonStyles.TUXButton_iconContainer}><i className='bx bxs-home'></i></div>
                   <div className={TUXButtonStyles.TUXButton_label}>For you</div>
               </div>
             </button>
@@ -41,7 +41,7 @@ function SideNav() {
           <NavLink to={config.routes.home} >
             <button className={TUXButtonStyles.TUXButton}>
               <div className={TUXButtonStyles.TUXButton_content}>
-                <div className={TUXButtonStyles.TUXButton_iconContainer}><i class='bx bx-compass'></i></div>
+                <div className={TUXButtonStyles.TUXButton_iconContainer}><i className='bx bx-compass'></i></div>
                   <div className={TUXButtonStyles.TUXButton_label}>Explore</div>
               </div>
             </button>
@@ -51,7 +51,7 @@ function SideNav() {
           <NavLink to={config.routes.home} >
             <button className={TUXButtonStyles.TUXButton}>
               <div className={TUXButtonStyles.TUXButton_content}>
-                <div className={TUXButtonStyles.TUXButton_iconContainer}><i class='bx bx-user-minus' ></i></div>
+                <div className={TUXButtonStyles.TUXButton_iconContainer}><i className='bx bx-user-minus' ></i></div>
                   <div className={TUXButtonStyles.TUXButton_label}>Following</div>
               </div>
             </button>
@@ -61,7 +61,7 @@ function SideNav() {
           <NavLink to={config.routes.home} >
             <button className={TUXButtonStyles.TUXButton}>
               <div className={TUXButtonStyles.TUXButton_content}>
-                <div className={TUXButtonStyles.TUXButton_iconContainer}><i class='bx bxs-tv' ></i></div>
+                <div className={TUXButtonStyles.TUXButton_iconContainer}><i className='bx bxs-tv' ></i></div>
                   <div className={TUXButtonStyles.TUXButton_label}>LIVE</div>
               </div>
             </button>
@@ -71,7 +71,7 @@ function SideNav() {
           <NavLink to={config.routes.home} >
             <button className={TUXButtonStyles.TUXButton}>
               <div className={TUXButtonStyles.TUXButton_content}>
-                <div className={TUXButtonStyles.TUXButton_iconContainer}><i class='bx bx-folder-plus' ></i></div>
+                <div className={TUXButtonStyles.TUXButton_iconContainer}><i className='bx bx-folder-plus' ></i></div>
                   <div className={TUXButtonStyles.TUXButton_label}>Upload</div>
               </div>
             </button>
@@ -81,7 +81,7 @@ function SideNav() {
           <NavLink to={config.routes.home} >
             <button className={TUXButtonStyles.TUXButton}>
               <div className={TUXButtonStyles.TUXButton_content}>
-                <div className={TUXButtonStyles.TUXButton_iconContainer}><i class='bx bxs-user'></i></div>
+                <div className={TUXButtonStyles.TUXButton_iconContainer}><i className='bx bxs-user'></i></div>
                   <div className={TUXButtonStyles.TUXButton_label}>Profile</div>
               </div>
             </button>
@@ -91,7 +91,7 @@ function SideNav() {
           <NavLink to={config.routes.home} >
             <button className={TUXButtonStyles.TUXButton}>
               <div className={TUXButtonStyles.TUXButton_content}>
-                <div className={TUXButtonStyles.TUXButton_iconContainer}><i class='bx bx-dots-horizontal' ></i></div>
+                <div className={TUXButtonStyles.TUXButton_iconContainer}><i className='bx bx-dots-horizontal' ></i></div>
                   <div className={TUXButtonStyles.TUXButton_label}>More</div>
               </div>
             </button>
