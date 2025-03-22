@@ -1,0 +1,59 @@
+.TUXTooltip {
+    max-width: 204px;
+    min-width: 40px;
+}
+
+//searchButton
+.TUXTooltipSeach {
+    max-width: 204px;
+    min-width: 40px;
+    
+}
+.TUXButtonSearch {
+    border: 0px;
+    width: 100%;
+    border-radius: 999px;
+    background-color: rgb(176, 176, 176);
+    padding: 5px 10px;
+}
+
+.TUXButton_contentSearch {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    gap: 30px;
+}
+
+.TUXButton_iconContainerSearch {
+    font-size: 19px;
+    color: rgb(146, 151, 151);
+}
+
+.TUXButton_labelSearch {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(216, 216, 216);
+}
+
+.TUXButton {
+    border: 0px;
+    width: 100%;
+    background-color: white;
+}
+
+.TUXButton_content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+}
+
+.TUXButton_iconContainer {
+    font-size: 32px;
+}
+
+.TUXButton_label {
+    font-size: 20px;
+    font-weight: 600;
+}

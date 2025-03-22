@@ -1,0 +1,21 @@
+.SideNav {
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-left: 20px;
+}
+.FixedContent {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0px 8px;
+}
+
+.logo {
+    object-fit: cover;
+    width: 118px;
+    height: 42px;
+}
