@@ -1,7 +1,9 @@
-import { NavLink } from "react-router-dom"
-import config from "../../config/index"
-import TUXButtonStyles from "./TUXButton.module.scss"
-import SideNavStyles from "./SideNav.module.scss"
+import { NavLink } from 'react-router-dom';
+import config from '../../config/index';
+import SearchStyles from './TUXButtonSearch.module.scss';
+import SideNavStyles from './SideNav.module.scss';
+import TUXButton from './TUXButton';
+import navigation from '../../navigation';
 
 function SideNav() {
   return (
@@ -10,93 +12,34 @@ function SideNav() {
         <div className="logoContainer">
           <NavLink to={config.routes.home}>
             <div className="logoContent">
-              <img src="./src/assets/imgs/logoTikTok.jpg" alt="TikTok" className={SideNavStyles.logo}/>
+              <img
+                src="./src/assets/imgs/logoTikTok.jpg"
+                alt="TikTok"
+                className={SideNavStyles.logo}
+              />
             </div>
           </NavLink>
         </div>
-        <div className={TUXButtonStyles.TUXTooltipSearch}>
-          <NavLink to={config.routes.home} >
-            <button className={TUXButtonStyles.TUXButtonSearch}>
-              <div className={TUXButtonStyles.TUXButton_contentSearch}>
-                <div className={TUXButtonStyles.TUXButton_iconContainerSearch}><i className='bx bx-search'></i></div>
-                  <div className={TUXButtonStyles.TUXButton_labelSearch}>Tìm kiếm</div>
+        <div className={SearchStyles.TUXTooltipSearch}>
+          <NavLink to={config.routes.home}>
+            <button className={SearchStyles.TUXButtonSearch}>
+              <div className={SearchStyles.TUXButton_contentSearch}>
+                <div className={SearchStyles.TUXButton_iconContainerSearch}>
+                  <i className="bx bx-search"></i>
+                </div>
+                <div className={SearchStyles.TUXButton_labelSearch}>
+                  Tìm kiếm
+                </div>
               </div>
             </button>
           </NavLink>
         </div>
       </div>
       <div className="ScrollingContentContainer">
-        <div className="MainNavContent">
-          <div className={TUXButtonStyles.TUXTooltip}>
-          <NavLink to={config.routes.home} >
-            <button className={TUXButtonStyles.TUXButton}>
-              <div className={TUXButtonStyles.TUXButton_content}>
-                <div className={TUXButtonStyles.TUXButton_iconContainer}><i className='bx bxs-home'></i></div>
-                  <div className={TUXButtonStyles.TUXButton_label}>For you</div>
-              </div>
-            </button>
-          </NavLink>
-          </div>
-          <div className={TUXButtonStyles.TUXTooltip}>
-          <NavLink to={config.routes.home} >
-            <button className={TUXButtonStyles.TUXButton}>
-              <div className={TUXButtonStyles.TUXButton_content}>
-                <div className={TUXButtonStyles.TUXButton_iconContainer}><i className='bx bx-compass'></i></div>
-                  <div className={TUXButtonStyles.TUXButton_label}>Explore</div>
-              </div>
-            </button>
-          </NavLink>
-          </div>
-          <div className={TUXButtonStyles.TUXTooltip}>
-          <NavLink to={config.routes.home} >
-            <button className={TUXButtonStyles.TUXButton}>
-              <div className={TUXButtonStyles.TUXButton_content}>
-                <div className={TUXButtonStyles.TUXButton_iconContainer}><i className='bx bx-user-minus' ></i></div>
-                  <div className={TUXButtonStyles.TUXButton_label}>Following</div>
-              </div>
-            </button>
-          </NavLink>
-          </div>
-          <div className={TUXButtonStyles.TUXTooltip}>
-          <NavLink to={config.routes.home} >
-            <button className={TUXButtonStyles.TUXButton}>
-              <div className={TUXButtonStyles.TUXButton_content}>
-                <div className={TUXButtonStyles.TUXButton_iconContainer}><i className='bx bxs-tv' ></i></div>
-                  <div className={TUXButtonStyles.TUXButton_label}>LIVE</div>
-              </div>
-            </button>
-          </NavLink>
-          </div>
-          <div className={TUXButtonStyles.TUXTooltip}>
-          <NavLink to={config.routes.home} >
-            <button className={TUXButtonStyles.TUXButton}>
-              <div className={TUXButtonStyles.TUXButton_content}>
-                <div className={TUXButtonStyles.TUXButton_iconContainer}><i className='bx bx-folder-plus' ></i></div>
-                  <div className={TUXButtonStyles.TUXButton_label}>Upload</div>
-              </div>
-            </button>
-          </NavLink>
-          </div>
-          <div className={TUXButtonStyles.TUXTooltip}>
-          <NavLink to={config.routes.home} >
-            <button className={TUXButtonStyles.TUXButton}>
-              <div className={TUXButtonStyles.TUXButton_content}>
-                <div className={TUXButtonStyles.TUXButton_iconContainer}><i className='bx bxs-user'></i></div>
-                  <div className={TUXButtonStyles.TUXButton_label}>Profile</div>
-              </div>
-            </button>
-          </NavLink>
-          </div>
-          <div className={TUXButtonStyles.TUXTooltip}>
-          <NavLink to={config.routes.home} >
-            <button className={TUXButtonStyles.TUXButton}>
-              <div className={TUXButtonStyles.TUXButton_content}>
-                <div className={TUXButtonStyles.TUXButton_iconContainer}><i className='bx bx-dots-horizontal' ></i></div>
-                  <div className={TUXButtonStyles.TUXButton_label}>More</div>
-              </div>
-            </button>
-          </NavLink>
-          </div>
+        <div className={SideNavStyles.MainNavContent}>
+          {Object.keys(navigation).map((key) => (
+            <TUXButton data={navigation[key]} key={key} />
+          ))}
         </div>
         <div className="FooterContainer">
           <hr />
@@ -106,7 +49,7 @@ function SideNav() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default SideNav
+export default SideNav;

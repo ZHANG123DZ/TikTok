@@ -1,0 +1,20 @@
+.TUXTooltip {
+    max-width: 204px;
+    min-width: 40px;
+}
+
+.TUXButton {
+    border: 0px;
+    width: 100%;
+    background-color: white;
+    overflow: hidden;
+}
+
+.TUXButton_content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    font-size: 20px;
+    font-weight: 600;
+}

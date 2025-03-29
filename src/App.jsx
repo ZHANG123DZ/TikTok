@@ -1,30 +1,13 @@
-import './App.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import DefaultLayout from './layout/DefaultLayout/DefaultLayout.jsx'
-import routes from './routes'
+import AppRoutes from './component/AppRoutes';
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route element={<DefaultLayout />}>
-        {routes.map(route => {
-          const Component = route.component
-          return (
-            <Route 
-              key={route.path}
-              path={route.path}
-              element={<Component/>}
-            />
-          )
-        })}
-        </Route>
-      </Routes>
+      <AppRoutes />
     </Router>
-  )
-    
-  
+  );
 }
 
-export default App
+export default App;

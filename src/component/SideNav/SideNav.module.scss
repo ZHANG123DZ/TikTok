@@ -1,11 +1,14 @@
+*{
+    box-sizing: border-box;
+}
 .SideNav {
-    position: sticky;
-    top: 0px;
-    left: 0px;
     display: flex;
     flex-direction: column;
     gap: 30px;
     padding-left: 20px;
+    background-color: white;
+    height: 100%;
+    width: 240px;
 }
 .FixedContent {
     display: flex;
@@ -18,4 +21,11 @@
     object-fit: cover;
     width: 118px;
     height: 42px;
+}
+
+//
+.MainNavContent {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
