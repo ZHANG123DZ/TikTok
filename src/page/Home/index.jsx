@@ -1,47 +1,44 @@
-import { useEffect, useState } from 'react';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './Home.module.scss';
-import Login from '../Login';
-import Register from '../Register';
-import DivModalContainer from '../../component/DivModalContainer';
+import {
+  faEllipsis,
+  faHeart,
+  faPlus,
+  faVolumeXmark,
+} from '@fortawesome/free-solid-svg-icons';
+import clsx from 'clsx';
+import Button from '../../component/Button';
+import CommentTab from '../../component/CommentTab';
+import Article from '../../component/Article';
+import { getPosts } from '../../services/Posts/Posts.service';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 function Home() {
-  const [activeForm, setActiveForm] = useState(null);
+  const [post, setPost] = useState(null);
 
   useEffect(() => {
-    console.log(Boolean(activeForm));
-    const modalRoot = document.querySelector('.DivModalContainer');
-    if (activeForm) modalRoot.style.zIndex = '300';
-    else modalRoot.style.zIndex = '-300';
-  }, [activeForm]);
+  const getData = async () => {
+    const data = await getPosts();
+    if (data.data.length > 0) {
+      const random = data.data[Math.floor(Math.random() * data.data.length)];
+      setPost(random);
+    }
+  };
+  
+  getData();
+}, []);
 
   return (
-    <div className={styles.MainContent}>
-      <div>
-        {!activeForm ? (
-          <button
-            className={styles.topRightLoginButton}
-            onClick={() => setActiveForm('login')}
-          >
-            <div className="TUXButton_label">Login</div>
-          </button>
-        ) : (
-          <DivModalContainer>
-            {activeForm === 'login' ? (
-              <Login
-                switchToRegister={() => setActiveForm('register')}
-                onClose={() => setActiveForm(null)}
-              />
-            ) : (
-              <Register
-                switchToLogin={() => setActiveForm('login')}
-                onClose={() => setActiveForm(null)}
-              />
-            )}
-          </DivModalContainer>
-        )}
+    <main className={styles.DivMainContainer}>
+      {post && (
+        <>
+        <div className={styles.DivColumnListContainer}>
+        <Article data={post} setPosts={setPost}/>
       </div>
-    </div>
+      <CommentTab post_id={post.id}/>
+      </>)}
+    </main>
   );
 }
 

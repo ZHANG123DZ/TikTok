@@ -1,31 +1,46 @@
-import { Route, Routes } from "react-router-dom"
-import DefaultLayout from "../../layout/DefaultLayout/DefaultLayout"
-import routes from "../../routes"
-import ProtectedRoute from "../ProtectedRoute"
-import { Fragment } from "react"
+import { Route, Routes } from 'react-router-dom';
+import routes from '../../routes';
+
+import DefaultLayout from '../../layout/DefaultLayout/DefaultLayout';
+import ProtectedRoute from '../ProtectedRoute';
+import UserLayout from '../../layout/UserLayout';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCurrentUser } from '../../features/auth/authAsync';
+import { useEffect } from 'react';
 
 function AppRoutes() {
-    return (
-        <Routes>
-        <Route element={<DefaultLayout />}>
-        {routes.map(route => {
-          const Component = route.component
-          const RouteElement = route.protected?ProtectedRoute:Fragment
+  const dispatch = useDispatch();
+  const isAuth = useSelector((state) => state.auth.isAuth);
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch]);
+
+  return (
+    <Routes>
+      <Route element={isAuth ? <UserLayout /> : <DefaultLayout />}>
+        {routes.map((route) => {
+          const Component = route.component;
+          const isProtected = route.protected && !isAuth;
           return (
-            <Route 
+            <Route
               key={route.path}
               path={route.path}
               element={
-                <RouteElement>
-                  <Component/>
-                </RouteElement>
+                isProtected ? (
+                  <ProtectedRoute>
+                    <Component />
+                  </ProtectedRoute>
+                ) : (
+                  <Component />
+                )
               }
             />
-          )
+          );
         })}
-        </Route>
-      </Routes>
-    )
+      </Route>
+    </Routes>
+  );
 }
 
-export default AppRoutes
+export default AppRoutes;

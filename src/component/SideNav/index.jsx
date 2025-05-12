@@ -1,51 +1,89 @@
-import { NavLink } from 'react-router-dom';
-import config from '../../config/index';
-import SearchStyles from './TUXButtonSearch.module.scss';
-import SideNavStyles from './SideNav.module.scss';
-import TUXButton from './TUXButton';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import navigation from '../../navigation';
+import styles from './SideNav.module.scss';
+import Button from '../Button';
+import { useDispatch } from 'react-redux';
+import { loginModal } from '../../features/modalContent/modalContentSlice';
+import './styles.css';
+import TikTok from '../../assets/imgs/logoTikTok.png';
+import clsx from 'clsx';
 
 function SideNav() {
+  const dispatch = useDispatch();
+
   return (
-    <div className={SideNavStyles.SideNav}>
-      <div className={SideNavStyles.FixedContent}>
-        <div className="logoContainer">
-          <NavLink to={config.routes.home}>
-            <div className="logoContent">
-              <img
-                src="./src/assets/imgs/logoTikTok.jpg"
-                alt="TikTok"
-                className={SideNavStyles.logo}
-              />
-            </div>
-          </NavLink>
+    <div className={styles.DivSideNavPlaceholderContainer}>
+      <div className={styles.DivSideNavContainer}>
+        <div className={styles.DivAnimationCover}></div>
+        <div className={styles.DivFixedContentContainer}>
+          <div className={styles.DivLogoWrapper}>
+            <a href="#" style={{ position: 'relative' }}>
+              <img src={TikTok} alt="logoTikTok" style={{ width: '100px' }} />
+            </a>
+          </div>
+          <div className={styles.DivSearchWrapper}>
+            {
+              <Button
+                label="Tìm kiếm"
+                className="StyledTUXSearchButton"
+                secondary
+                size="medium"
+                searchButton
+                capsule
+                icon={<FontAwesomeIcon icon={faSearch} />}
+              ></Button>
+            }
+          </div>
         </div>
-        <div className={SearchStyles.TUXTooltipSearch}>
-          <NavLink to={config.routes.home}>
-            <button className={SearchStyles.TUXButtonSearch}>
-              <div className={SearchStyles.TUXButton_contentSearch}>
-                <div className={SearchStyles.TUXButton_iconContainerSearch}>
-                  <i className="bx bx-search"></i>
-                </div>
-                <div className={SearchStyles.TUXButton_labelSearch}>
-                  Tìm kiếm
-                </div>
+        <div className={styles.DivScrollingContentContainer}>
+          <div className={styles.DivMainNavContainer}>
+            {Object.values(navigation).map((data) => (
+              <div
+                className="TUXTooltip-reference StyledTUXTooltip"
+                key={data.label}
+              >
+                <Button
+                  to={data.link}
+                  label={data.label}
+                  className="StyledTUXNavButton"
+                  isDefault
+                  size="medium"
+                  secondary
+                  navButton
+                  icon={data.icon}
+                  IsProtected={data.protected}
+                ></Button>
               </div>
-            </button>
-          </NavLink>
-        </div>
-      </div>
-      <div className="ScrollingContentContainer">
-        <div className={SideNavStyles.MainNavContent}>
-          {Object.keys(navigation).map((key) => (
-            <TUXButton data={navigation[key]} key={key} />
-          ))}
-        </div>
-        <div className="FooterContainer">
-          <hr />
-          <h4>Company</h4>
-          <h4>Program</h4>
-          <h4>Terms & polices</h4>
+            ))}
+          </div>
+          <div className={styles.SubMainNavContentContainer}>
+            <div className="TUXTooltip-reference StyledTUXTooltip">
+              <Button
+                label="Đăng nhập"
+                className="StyledTUXNavButton"
+                isDefault
+                rounded
+                size="medium"
+                id="loginBtn"
+                primary
+                onClick={() => dispatch(loginModal())}
+              ></Button>
+            </div>
+          </div>
+          <div className={styles.SubMainNavFooterContainer}>
+            <div className={styles.DivFooterContainer}>
+              <h4 className={styles.H4LinkListHeader}>Công ty</h4>
+              <h4 className={styles.H4LinkListHeader}>Chương trình</h4>
+              <h4 className={styles.H4LinkListHeader}>
+                Điều khoản và chính sách
+              </h4>
+              <div className={styles.DivMoreContainer}>
+                <span className={styles.SpanMoreText}>Thêm</span>
+              </div>
+              <span className={styles.SpanCopyright}>&cpy 2025 TikTok</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -1,0 +1,53 @@
+.DivTitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 4px;
+}
+
+.DivDescription {
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 600;
+    font-size: 13px;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+.DivContainer {
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.DivCheckboxWrapper {
+    position: relative;
+}
+.InputCheckbox {
+    opacity: 0;
+    width: 24px;
+    height: 24px;
+}
+.InputCheckbox:checked.LabelCheck {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    opacity: 1;
+    width: 24px;
+    height: 24px;
+    background-color: rgb(255, 59, 92);
+}
+.DivLabel {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.8);
+}
+.LabelCheck {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 24px;
+    height: 24px;
+    color: rgba(255, 255, 255, 0.459);
+}

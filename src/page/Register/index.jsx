@@ -1,68 +1,87 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import RegisterOptionContainer from './RegisterOptionContainer';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { optionRegister } from '../../features/register/registerSlice';
+import RegisterPhoneForm from './RegisterPhoneForm';
+import RegisterEmailForm from './RegisterEmailForm';
 
-function Register({ switchToLogin, onClose }) {
-  const title = document.querySelector('title');
-  title.textContent = 'Đăng ký | TikTok';
+import styles from './register.module.scss';
+import {
+  closeModal,
+  loginModal,
+} from '../../features/modalContent/modalContentSlice';
+import RegisterFinal from './RegisterFinal';
+function Register() {
+  const component = useSelector((state) => state.register.component);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    document.title = 'Đăng ký | TikTok';
+    dispatch(optionRegister());
+  }, [dispatch]);
+
+  const renderRegister = () => {
+    switch (component) {
+      case 'optionRegister':
+        return <RegisterOptionContainer />;
+      case 'emailRegister':
+        return <RegisterEmailForm />;
+      case 'phoneRegister':
+        return <RegisterPhoneForm />;
+      case 'finalRegister':
+        return <RegisterFinal />;
+      default:
+        return null;
+    }
+  };
 
   return (
-    <div className="DivContentContainer">
-      <div className="DivModalContent">
-        <div className="DivPageWrapper">
-          <a href="" />
-          <div className="DivLoginContainer">
-            {/*  */}
-            <div className="DivHomeContainer">
-              <h2 className="H2Title">Đăng ký vào TikTok</h2>
-              <div className="LoginOptionContainer">
-                <div>
-                  <div>
-                    <div className="LasTLoginMethodContainer"></div>
-                    <div className="DivBoxContainer">
-                      <div className="DivIconContainer">
-                        <FontAwesomeIcon icon={faUser} />
-                      </div>
-                      <div className="DivTextContainer">
-                        <div style={{ fontSize: '11px' }}>
-                          Sử dụng số điện thoại hoặc email
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+    <div className="DivCenterWrapper">
+      <div className="DivContentContainer">
+        <div className="DivModalContent">
+          <div className="DivPageWrapper">
+            <a href="" />
+            <div className="DivLoginContainer">
+              <div className="DivHomeContainer">{renderRegister()}</div>
             </div>
-            {/*  */}
+          </div>
+          {component === 'option' ? (
+            <div className="DivAgreement">
+              <p className={styles.PText}>
+                Bằng việc tiếp tục với tài khoản có vị trí tại
+                <Link className={styles.ALink}>Việt Nam</Link>
+                <a href="#" target="_blank" className={styles.ALink}>
+                  Điều khoản dịch vụ
+                </a>
+                , đồng thời xác nhận rằng bạn đã đọc
+                <a href="#" target="_blank" className={styles.ALink}>
+                  Chính sách quyền riêng tư
+                </a>
+                của chúng tôi.
+              </p>
+            </div>
+          ) : null}
+          <div className={styles.DivContainer}>
+            <div>Bạn có tài khoản?</div>
+            <Link
+              className={styles.ALink}
+              onClick={() => dispatch(loginModal())}
+            >
+              <span className={styles.spanLinkText}>Đăng nhập</span>
+            </Link>
           </div>
         </div>
-        {/*  */}
-        <div className="DivAgreement">
-          <p className="PText">
-            Bằng việc tiếp tục với tài khoản có vị trí tại
-            <Link className="ALink">Việt Nam</Link>
-            <a href="#" target="_blank" className="ALink">
-              Điều khoản dịch vụ
-            </a>
-            , đồng thời xác nhận rằng bạn đã đọc
-            <a href="#" target="_blank" className="ALink">
-              Chính sách quyền riêng tư
-            </a>
-            của chúng tôi.
-          </p>
-        </div>
-        {/*  */}
-        <div className="DivContainer">
-          <div>Bạn đã có tài khoản?</div>
-          <Link className="ALink" onClick={switchToLogin}>
-            <span className="spanLinkText">Đăng nhập</span>
-          </Link>
-        </div>
+        <button
+          className="DivCloseWrapper"
+          onClick={() => dispatch(closeModal())}
+        >
+          <FontAwesomeIcon icon={faXmark} />
+        </button>
       </div>
-      <button className="DivCloseWrapper" onClick={onClose}>
-        <FontAwesomeIcon icon={faXmark} />
-      </button>
     </div>
   );
 }

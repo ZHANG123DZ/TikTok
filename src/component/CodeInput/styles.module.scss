@@ -1,0 +1,25 @@
+.DivCodeInputContainer {
+    transition: 0.3s;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+}
+.DivIconContainer {
+    position: absolute;
+    right: 12px;
+    top: 16px;
+}
+.DivIconContainer:hover {
+    cursor: pointer;
+}
+.DivTextContainer {
+    font-family: TikTokFont;
+    font-size: 15px;
+    line-height: 15px;
+    margin: 4px 0px;
+    color: rgb(255, 76, 58);
+    display: flex;
+    margin-top: 10px;
+}

@@ -1,7 +1,20 @@
-import React from 'react';
+import { createContext, useContext, useState } from 'react';
+import PropTypes from 'prop-types';
+const ViewContext = createContext();
 
-function useViewContext() {
-  return <div></div>;
-}
+export const ViewProvider = ({ children }) => {
+  const [currentView, setCurrentView] = useState();
 
-export default useViewContext;
+  return (
+    <ViewContext.Provider value={{ currentView, setCurrentView }}>
+      {children}
+    </ViewContext.Provider>
+  );
+};
+
+ViewProvider.propTypes = {
+  children: PropTypes.element,
+};
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const useViewContext = () => useContext(ViewContext);

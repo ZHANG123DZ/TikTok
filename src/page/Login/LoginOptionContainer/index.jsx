@@ -1,12 +1,16 @@
 import { faQrcode, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { phoneLogin } from '../../../features/login/loginSlice';
 
-function LoginOptionContainer({ Component }) {
+import styles from './style.module.scss';
+function LoginOptionContainer() {
+  const dispatch = useDispatch();
+
   return (
     <>
       <h2 className="H2Title">Đăng nhập vào TikTok</h2>
-      <div className="LoginOptionContainer">
+      <div className="DivLoginOptionContainer">
         <div>
           <div>
             <div className="LasTLoginMethodContainer"></div>
@@ -19,8 +23,8 @@ function LoginOptionContainer({ Component }) {
               </div>
             </div>
           </div>
-          <div onClick={Component()}>
-            <div className="LasTLoginMethodContainer"></div>
+          <div onClick={() => dispatch(phoneLogin())}>
+            <div className={styles.LasTLoginMethodContainer}></div>
             <div className="DivBoxContainer">
               <div className="DivIconContainer">
                 <FontAwesomeIcon icon={faUser} />
@@ -37,9 +41,5 @@ function LoginOptionContainer({ Component }) {
     </>
   );
 }
-
-LoginOptionContainer.propTypes = {
-  Component: PropTypes.element,
-};
 
 export default LoginOptionContainer;

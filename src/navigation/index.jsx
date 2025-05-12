@@ -1,63 +1,53 @@
-import { faCompass, faEllipsis, faHome, faMessage, faPaperPlane, faSquarePlus, faTelevision, faUser, faUserGroup, faUserMinus } from "@fortawesome/free-solid-svg-icons";
-import config from "../config";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCompass,
+  faEllipsis,
+  faHome,
+  faSquarePlus,
+  faTelevision,
+  faUser,
+  faUserMinus,
+} from '@fortawesome/free-solid-svg-icons';
+import config from '../config';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const navigation = {
-    home: {
-        label: "For You",
-        link: config.routes.home,
-        icon: <FontAwesomeIcon icon={faHome}/>
-    },
-    explore: {
-        label: "Explore",
-        link: config.routes.home,
-        icon: <FontAwesomeIcon icon={faCompass}/>
-    },
-    following: {
-        label: "Following",
-        link: config.routes.home,
-        icon: <FontAwesomeIcon icon={faUserMinus}/>
-    },
-    friends: {
-        label: "Friends",
-        link: config.routes.home,
-        icon: <FontAwesomeIcon icon={faUserGroup}/>,
-        protected: true,
-    },
-    upload: {
-        label: "Upload",
-        link: config.routes.home,
-        icon: <FontAwesomeIcon icon={faSquarePlus}/>,
-        protected: true,
-    },
-    active: {
-        label: "Active",
-        link: config.routes.home,
-        icon: <FontAwesomeIcon icon={faMessage}/>,
-        protected: true,
-    },
-    message: {
-        label: "Message",
-        link: config.routes.home,
-        icon: <FontAwesomeIcon icon={faPaperPlane}/>,
-        protected: true,
-    },
-    live: {
-        label: "LIVE",
-        link: config.routes.home,
-        icon: <FontAwesomeIcon icon={faTelevision}/>
-    },
-    profile: {
-        label: "Profile",
-        link: config.routes.home,
-        icon: <FontAwesomeIcon icon={faUser}/>,
-        protected: true,
-    },
-    more: {
-        label: "More",
-        link: config.routes.home,
-        icon: <FontAwesomeIcon icon={faEllipsis}/>
-    },
-}
+  home: {
+    label: 'Đề xuất',
+    link: config.routes.home,
+    icon: <FontAwesomeIcon icon={faHome} />,
+  },
+  explore: {
+    label: 'Khám phá',
+    link: config.routes.explore,
+    icon: <FontAwesomeIcon icon={faCompass} />,
+  },
+  following: {
+    label: 'Đang theo dõi',
+    link: config.routes.following,
+    icon: <FontAwesomeIcon icon={faUserMinus} />,
+  },
+  upload: {
+    label: 'Đăng lên',
+    link: config.routes.upload,
+    icon: <FontAwesomeIcon icon={faSquarePlus} />,
+    protected: true,
+  },
+  live: {
+    label: 'LIVE',
+    link: config.routes.live,
+    icon: <FontAwesomeIcon icon={faTelevision} />,
+  },
+  profile: {
+    label: 'Hồ sơ',
+    link: config.routes.profile,
+    icon: <FontAwesomeIcon icon={faUser} />,
+    protected: true,
+  },
+  more: {
+    label: 'Thêm',
+    link: config.routes.more,
+    icon: <FontAwesomeIcon icon={faEllipsis} />,
+  },
+};
 
-export default navigation
+export default navigation;
